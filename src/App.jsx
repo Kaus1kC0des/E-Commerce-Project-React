@@ -1,4 +1,4 @@
-import HomePage from "./pages/HomePage";
+import {HomePage} from "./pages/HomePage";
 import {CheckoutPage} from "./pages/CheckoutPage.jsx";
 import "./App.css";
 import {Route, Routes} from "react-router";
