@@ -1,5 +1,5 @@
 import {HomePage} from "./pages/HomePage";
-import {CheckoutPage} from "./pages/CheckoutPage.jsx";
+import {CheckoutPage} from "./pages/checkout/CheckoutPage.jsx";
 import {OrdersPage} from "./pages/OrdersPage.jsx";
 import {TrackingPage} from "./pages/TrackingPage.jsx";
 import "./App.css";
