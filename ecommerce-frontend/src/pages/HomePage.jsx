@@ -1,14 +1,14 @@
 import "./HomePage.css";
 import {Header} from "../components/Header.jsx";
-import { products } from "../assets/data/products";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export function HomePage() {
+    const [products, setProducts] = useState([]);
     useEffect(() => {
         axios.get("http://localhost:3000/api/products")
             .then((response) => {
-                console.log(response?.data);
+                setProducts(response?.data);
             });
     }, []);
     return (
@@ -22,7 +22,7 @@ export function HomePage() {
                     {
                         products.map((product) => {
                             return (
-                                <div className="product-container" id={product.id}>
+                                <div className="product-container" key={product.id} id={product.id}>
                                     <div className="product-image-container">
                                         <img
                                             className="product-image"
