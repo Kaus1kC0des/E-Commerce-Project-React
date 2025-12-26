@@ -1,8 +1,18 @@
 import "./HomePage.css";
-import {Header} from "../components/Header.jsx"
-import { products } from "../assets/data/products"
+import {Header} from "../components/Header.jsx";
+import { products } from "../assets/data/products";
+import axios from "axios";
+import { useEffect } from "react";
+
 export function HomePage() {
+    useEffect(() => {
+        axios.get("http://localhost:3000/api/products")
+            .then((response) => {
+                console.log(response?.data);
+            });
+    }, []);
     return (
+
         <>
             <title>Home</title>
             <link rel="icon" href="/home-favicon.png"/>
