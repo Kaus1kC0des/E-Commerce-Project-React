@@ -5,7 +5,12 @@ import MobileLogoWhiteImage from "../assets/images/mobile-logo-white.png";
 import SearchIcon from "../assets/images/icons/search-icon.png"
 import CartIcon from "../assets/images/icons/cart-icon.png"
 
-export function Header() {
+export function Header({cart}) {
+    let totalQty = 0;
+    cart?.forEach((item) => {
+        totalQty += item.quantity;
+    });
+    console.log(cart);
     return (
         <>
             <div className="header">
@@ -44,7 +49,7 @@ export function Header() {
                         className={({ isActive}) => `cart-link ${isActive ? "header-link" : ""}`}
                     >
                         <img className="cart-icon" src={CartIcon} alt="Image"/>
-                        <div className="cart-quantity">3</div>
+                        <div className="cart-quantity">{totalQty}</div>
                         <div className="cart-text">Cart</div>
                     </NavLink>
                 </div>
