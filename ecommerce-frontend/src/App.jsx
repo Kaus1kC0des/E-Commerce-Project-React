@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {HomePage} from "./pages/HomePage";
+import {HomePage} from "./pages/home/HomePage.jsx";
 import {CheckoutPage} from "./pages/checkout/CheckoutPage.jsx";
 import {OrdersPage} from "./pages/OrdersPage.jsx";
 import {TrackingPage} from "./pages/TrackingPage.jsx";
