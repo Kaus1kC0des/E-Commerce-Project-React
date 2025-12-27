@@ -1,7 +1,6 @@
 import "./CheckoutPageHeader.css";
 import "./CheckoutPage.css";
 import {CheckoutHeader} from "./CheckoutHeader.jsx";
-import {formatMoney} from "../../utils/money.js";
 import axios from "axios";
 import {useState, useEffect} from "react";
 import {OrderSummary} from "./OrderSummary.jsx";
