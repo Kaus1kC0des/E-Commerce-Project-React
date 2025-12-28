@@ -1,8 +1,28 @@
 import "./TrackingPage.css"
 import {Header} from "../components/Header.jsx"
-import {Link} from "react-router";
+import {Link, useParams} from "react-router";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import dayjs from "dayjs";
 
 export function TrackingPage() {
+    let {orderId, productId} = useParams();
+    const [orders, setOrders] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    useEffect(() => {
+        const fetchOrders = async () => {
+            const response = await axios.get(`/api/orders/${orderId}?expand=products`);
+            setOrders(response?.data);
+            const product = response?.data?.products?.find( product => product.productId === productId);
+            setSelectedProduct(product);
+            console.log(product);
+        }
+
+        fetchOrders().then(() => {
+            console.log("Orders fetched successfully!");
+        });
+    }, [orderId, productId]);
+    if(!orders || !selectedProduct) return null;
     return (
         <>
             <Header/>
@@ -15,18 +35,18 @@ export function TrackingPage() {
                     </Link>
 
                     <div className="delivery-date">
-                        Arriving on Monday, June 13
+                        {`Arriving on ${dayjs(selectedProduct.estimatedDeliveryTimeMs).format("dddd - DD MMMM, YYYY")}`}
                     </div>
 
                     <div className="product-info">
-                        Black and Gray Athletic Cotton Socks - 6 Pairs
+                        {selectedProduct.product.name}
                     </div>
 
                     <div className="product-info">
-                        Quantity: 1
+                        {`Quantity: ${selectedProduct.quantity}`}
                     </div>
 
-                    <img className="product-image" src="images/products/athletic-cotton-socks-6-pairs.jpg"/>
+                    <img className="product-image" src={selectedProduct.product.image}/>
 
                     <div className="progress-labels-container">
                         <div className="progress-label">

@@ -6,7 +6,7 @@ export function OrderSummary({ deliveryOptions, cart }){
         <div className="order-summary">
             {
                 deliveryOptions.length > 0 &&
-                <CartItemDetails cart={cart} deliveryOptions={deliveryOptions}/>f
+                <CartItemDetails cart={cart} deliveryOptions={deliveryOptions}/>
             }
         </div>
     )
