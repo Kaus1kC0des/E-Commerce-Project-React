@@ -78,20 +78,22 @@ export default function Products({product, loadCart}) {
 
             <div className="product-spacer"></div>
 
-            {
-                addedToCart &&
-                <div className="added-to-cart added-to-cart--visible">
-                    <img src="images/icons/checkmark.png" alt="Checkmark"/>
-                    <p>Added</p>
-                </div>
-            }
+            <div className="product-actions">
+                {
+                    addedToCart &&
+                    <div className="added-to-cart added-to-cart--visible">
+                        <img src="images/icons/checkmark.png" alt="Checkmark"/>
+                        <p>Added</p>
+                    </div>
+                }
 
-            <button
-                className="add-to-cart-button button-primary"
-                onClick={addToCart}
-            >
-                Add to Cart
-            </button>
+                <button
+                    className="add-to-cart-button button-primary"
+                    onClick={addToCart}
+                >
+                    Add to Cart
+                </button>
+            </div>
         </div>
     )
 }

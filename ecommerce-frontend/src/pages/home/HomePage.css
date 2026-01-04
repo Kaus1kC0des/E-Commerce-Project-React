@@ -130,6 +130,17 @@
     flex: 1;
 }
 
+.home-page .product-actions {
+    position: relative;
+}
+
+.home-page .product-actions .added-to-cart {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 0;
+    margin-bottom: 0;
+}
+
 .home-page .added-to-cart {
     color: rgb(25, 135, 84);
     font-size: 16px;
