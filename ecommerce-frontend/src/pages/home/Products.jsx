@@ -7,25 +7,27 @@ export default function Products({product, loadCart}) {
     const [addedToCart, setAddedToCart] = useState(false);
     const addedTimerRef = useRef(null);
 
-    useEffect(()=>{
+    useEffect(() => {
         return () => {
-            if(addedTimerRef.current){
+            if (addedTimerRef.current) {
                 clearTimeout(addedTimerRef.current);
             }
         };
-    }, [])
+    }, []);
 
     const addToCart = async () => {
         await axios.post("/api/cart-items", {
             productId: product.id,
             quantity: quantity,
         });
-        setAddedToCart(true);
         await loadCart();
-        if(addedTimerRef.current){
+
+        if (addedTimerRef.current) {
             clearTimeout(addedTimerRef.current);
         }
-        addedTimerRef.current = setTimeout(() => setAddedToCart(false), 20000);
+
+        setAddedToCart(true);
+        addedTimerRef.current = setTimeout(() => setAddedToCart(false), 2000);
     }
     const selectQuantity = (event) => {
         const quantitySelected = Number(event.target.value);
@@ -78,9 +80,9 @@ export default function Products({product, loadCart}) {
 
             {
                 addedToCart &&
-                <div className="added-to-cart">
+                <div className="added-to-cart added-to-cart--visible">
                     <img src="images/icons/checkmark.png" alt="Checkmark"/>
-                    <p style={{color: "green"}}>Added</p>
+                    <p>Added</p>
                 </div>
             }
 
