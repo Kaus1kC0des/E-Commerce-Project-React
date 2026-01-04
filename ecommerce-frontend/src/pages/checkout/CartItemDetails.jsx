@@ -51,6 +51,12 @@ export function CartItemDetails({cart, deliveryOptions, loadCart}) {
                                                                         style={{width: "50px"}}
                                                                         className="quantity-editor"
                                                                         onChange={(event) => setQty(Number(event.target.value))}
+                                                                        onKeyDown={(event) => {
+                                                                            if(event.key == "Enter"){
+                                                                                updateItem().then();
+                                                                                setEditQty(!editQty);
+                                                                            }
+                                                                        }}
                                                                     />
                                                                     <span
                                                                         className="update-quantity-link link-primary"
