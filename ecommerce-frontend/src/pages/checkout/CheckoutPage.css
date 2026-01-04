@@ -119,6 +119,20 @@
   margin-left: 3px;
 }
 
+.checkout-page .button-link {
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.checkout-page .button-link:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 @media (max-width: 1000px) {
   .checkout-page .delivery-options {
     /* grid-column: 1 means this element will be placed
